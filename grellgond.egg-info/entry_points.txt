@@ -1,0 +1,2 @@
+[console_scripts]
+grellgond = grellgond.cli:main
