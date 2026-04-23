@@ -1,17 +1,19 @@
 import sympy
 
-class GrellgondConstant:
+class GrellgondConstant(float):
+    def __new__(cls):
+        # This tells Python: "Under the hood, treat this entire class as this exact float"
+        exact_string = "0.124681418202234364452728696112114118148"
+        return super().__new__(cls, float(exact_string))
+
     def __init__(self):
         self.symbol = 'ℷ'
         self.name = "Grellgond Constant"
-        # Pre-calculated to the first 15 gaps for immediate use
-        self.approx = 0.1246814182022343644
+        self.exact_string = "0.124681418202234364452728696112114118148"
         
     def __repr__(self):
-        return f"{self.symbol} ({self.name}) ≈ {self.approx}"
-        
-    def __float__(self):
-        return self.approx
+        # This is what shows up when you print the variable directly
+        return f"{self.symbol} ({self.name}) ≈ {self.exact_string}..."
 
     def calculate_digits(self, prime_limit=100000):
         """
